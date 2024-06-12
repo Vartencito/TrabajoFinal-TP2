@@ -1,4 +1,4 @@
-export default class UsersModelsMemory {
+export default class ProductMemoryModels {
   #products;
   #idCounter;
   constructor() {
@@ -52,10 +52,6 @@ export default class UsersModelsMemory {
 
   updateProduct = async (productToUpdate, id) => {
     const productFound = await this.getProductByID(id);
-    /* console.log(productFound);
-    console.log(productFound.instance);
-    console.log(productFound.position);
-    */
     this.#products[productFound.position] = productToUpdate;
 
     return true;

@@ -9,6 +9,8 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/", new ProductRouter().start());
 
+// await MongoConnection.connect();
+
 app.listen(config.PORT, () => {
   console.log(`Server listening on port ${config.PORT}`);
 });
