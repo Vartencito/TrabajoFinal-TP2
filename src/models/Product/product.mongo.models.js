@@ -2,7 +2,8 @@ import MongoConnection from "../MongoDB_Connetion.js";
 
 export default class ProductMongoModels {
   getProducts = async () => {
-    const products = await MongoConnection.db.collection("products");
+    await MongoConnection.connect();
+    const products = await MongoConnection.db.collection("products").find({}).toArray();
     return products;
   };
 

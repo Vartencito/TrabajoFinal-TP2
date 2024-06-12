@@ -6,14 +6,15 @@ export default class MongoConnection {
   static db = null;
 
   static connect = async () => {
-    this.client = new MongoClient(config.CONNECTION_STRING, {
-      useNewUrlParser:true
-    });
-    await this.client.connect();
-    console.log("Base de datos conectada!");
+    try {
+      MongoConnection.client = new MongoClient(config.CONNECTION_STRING);
+      await MongoConnection.client.connect();
+      console.log("Base de datos conectada!");
 
-    this.db = this.client.db();
+      MongoConnection.db = MongoConnection.client.db(config.DB_NAME);
+    } catch (e) {
+      console.log("Error de conexión Mongo DB: ", e);
+    }
   };
 
-  static disconnect = () => {};
 }
