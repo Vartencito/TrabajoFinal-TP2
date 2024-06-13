@@ -9,8 +9,8 @@ export default class MongoConnection {
     try {
       MongoConnection.client = new MongoClient(config.CONNECTION_STRING);
       await MongoConnection.client.connect();
-      console.log("Base de datos conectada!");
 
+      console.log("Base de datos conectada!");
       MongoConnection.db = MongoConnection.client.db(config.DB_NAME);
     } catch (e) {
       console.log("Error de conexión Mongo DB: ", e);

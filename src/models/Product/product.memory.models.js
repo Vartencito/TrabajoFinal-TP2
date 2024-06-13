@@ -27,18 +27,23 @@ export default class ProductMemoryModels {
   };
 
   getProductByID = async (id) => {
-    let instance;
-    let position;
+    // let instance;
+    // let position;
 
-    this.#products.find((e, idx) => {
-      if (e.id == id) {
-        instance = e;
-        position = idx;
-        return true;
+    // this.#products.find((e, idx) => {
+    //   if (e.id == id) {
+    //     instance = e;
+    //     position = idx;
+    //     return true;
+    //   }
+    // });
+
+    // return {instance, position};
+    return this.#products.find((product) => {
+      if (product.id === id) {
+        return product;
       }
     });
-
-    return {instance, position};
   };
 
   createProduct = async (productToAdd) => {
@@ -51,10 +56,16 @@ export default class ProductMemoryModels {
   };
 
   updateProduct = async (productToUpdate, id) => {
-    const productFound = await this.getProductByID(id);
-    this.#products[productFound.position] = productToUpdate;
+    // const productFound = await this.getProductByID(id);
+    // this.#products[productFound.position] = productToUpdate;
 
-    return true;
+    // return true;
+    this.#products.forEach((product) => {
+      if (product.id === id) {
+        product = productToUpdate;
+        return;
+      }
+    });
   };
 
   removeProduct = async (id) => {

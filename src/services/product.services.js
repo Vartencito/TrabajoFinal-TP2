@@ -14,9 +14,7 @@ export default class ProductServices {
 
   getProductByID = async (id) => {
     const product = await this.#models.getProductByID(id);
-    const {instance} = product;
-
-    return instance;
+    return product;
   };
 
   createProduct = async (productToAdd) => {

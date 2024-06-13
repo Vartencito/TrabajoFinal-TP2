@@ -1,9 +1,7 @@
 const PORT = 8080;
-const PERSISTENCE_TYPE = "MONGO_DB";
-
-// MongoDB keys
-const CONNECTION_STRING = "mongodb://127.0.0.1";
-const DB_NAME = "tp2";
+const PERSISTENCE_TYPE = "MEM";
+const CONNECTION_STRING = "mongodb+srv://admin:admin@clustertp2.zd4mpb5.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTP2";
+const DB_NAME = "sample_mflix";
 
 export default {
   PORT,

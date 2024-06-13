@@ -1,6 +1,7 @@
 import express from "express";
 import config from "./config.js";
 import ProductRouter from "./src/routes/product.routes.js";
+import MongoConnection from "./src/models/MongoDB_Connetion.js";
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/", new ProductRouter().start());
 
-// await MongoConnection.connect();
+await MongoConnection.connect();
 
 app.listen(config.PORT, () => {
   console.log(`Server listening on port ${config.PORT}`);
