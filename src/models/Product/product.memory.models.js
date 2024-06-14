@@ -71,7 +71,7 @@ export default class ProductMemoryModels {
   removeProduct = async (id) => {
     const product = await this.getProductByID(id);
     this.#products.splice(product.position, 1);
-
+//MODIFICAR ESTOOOOOOOOO
     return true;
   };
 }

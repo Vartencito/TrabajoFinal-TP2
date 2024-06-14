@@ -14,7 +14,7 @@ export default class ProductControllers {
       res.status(200).send(products);
     } catch (error) {
       console.log(`   ---> Server Error: [${error}]`);
-      res.status(400).send("<!DOCTYPE html><html><title>400 Bad Request</title><body><h1>Page Not Found</h1></body></html>");
+      res.status(400).send("<!DOCTYPE html><html><title>409 Conflict</title><body><h1>Page Not Found</h1></body></html>");
     }
   };
 
