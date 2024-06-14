@@ -29,7 +29,7 @@ export default class ProductMongoModels {
       .collection("products")
       .updateOne(
         { _id: new ObjectId(id) },
-        { $set: { name: productToUpdate.name, price: productToUpdate.price } }
+        { $set: { denominacion: productToUpdate.denominacion, price: productToUpdate.price } }
       );
     return response;
     //db.products.updateOne({_id:ObjectId(id)}, {descripcion:""})

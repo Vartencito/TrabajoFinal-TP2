@@ -4,7 +4,6 @@ export default class UserMemoryModel {
   getUsers = async () => {
     const response = await fetch("https://fakestoreapi.com/users");
     const result = await response.json();
-    console.log(result);
     return result;
   };
 
@@ -18,13 +17,15 @@ export default class UserMemoryModel {
     if (response.status !== 200) {
       throw new Error("The user could not be created on the third party API");
     }
-    return user;
+    return {
+      result: 'OK',
+      user,
+    };
   };
 
   removeUser = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/users/${id}`);
     const result = await response.json();
-    console.log(result);
     return result;
   };
 }

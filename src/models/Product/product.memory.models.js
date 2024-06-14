@@ -3,23 +3,7 @@ export default class ProductMemoryModels {
   #idCounter;
   constructor() {
     this.#idCounter = 0;
-    this.#products = [
-      {
-        denominacion: "Leche Descremada",
-        precio: 4.99,
-        id: 1,
-      },
-      {
-        denominacion: "Cubierta para camión IVECO",
-        precio: 75.99,
-        id: 2,
-      },
-      {
-        denominacion: "Jabón Dove Original",
-        precio: 2.45,
-        id: 3,
-      },
-    ];
+    this.#products = [];
   }
 
   getProducts = async () => {
@@ -39,11 +23,13 @@ export default class ProductMemoryModels {
     // });
 
     // return {instance, position};
-    return this.#products.find((product) => {
-      if (product.id === id) {
-        return product;
-      }
-    });
+    const found = this.#products.find((product) => product.id == id);
+    let result = found;
+    if (found === null || found === undefined) {
+      result = "Objecto not found";
+    }
+
+    return result;
   };
 
   createProduct = async (productToAdd) => {
@@ -60,18 +46,18 @@ export default class ProductMemoryModels {
     // this.#products[productFound.position] = productToUpdate;
 
     // return true;
-    this.#products.forEach((product) => {
-      if (product.id === id) {
-        product = productToUpdate;
-        return;
-      }
-    });
+    const index = this.#products.findIndex((producto) => producto.id == id);
+    if (index !== -1) {
+      this.#products[index] = { ...productToUpdate, id: parseInt(id) };
+    }
+    return { indexObjectDeleted: index };
   };
 
   removeProduct = async (id) => {
-    const product = await this.getProductByID(id);
-    this.#products.splice(product.position, 1);
-//MODIFICAR ESTOOOOOOOOO
+    const index = this.#products.findIndex((producto) => producto.id == id);
+    if (index !== -1) {
+      this.#products.splice(index, 1);
+    }
     return true;
   };
 }
