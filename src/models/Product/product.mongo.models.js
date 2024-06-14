@@ -1,4 +1,3 @@
-import ProductServices from "../../services/product.services.js";
 import MongoConnection from "../MongoDB_Connetion.js";
 import { ObjectId } from "mongodb";
 
@@ -15,7 +14,6 @@ export default class ProductMongoModels {
     const product = await MongoConnection.db
       .collection("products")
       .findOne({ _id: new ObjectId(id) });
-      console.log(product);
     return product;
   };
 
