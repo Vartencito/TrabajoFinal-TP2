@@ -11,6 +11,11 @@ export default class UserServices {
     return users;
   };
 
+  createUser = async (userToAdd) => {
+    const result = await this.#models.createUser(userToAdd);
+    return result;
+  };
+
   removeUser = async (id) => {
     const result = await this.#models.removeUser(id);
     return result;
